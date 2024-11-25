@@ -1,3 +1,7 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">ProyectoFirebase</string>
+=======
+    <string name="app_name">ProyectoFireBase</string>
+>>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
 </resources>

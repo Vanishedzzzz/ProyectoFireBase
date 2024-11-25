@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
+=======
+<<<<<<< HEAD
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+>>>>>>> fdaa6367d3c952bea4e1a35788f5d29b3910b4c2
+>>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">

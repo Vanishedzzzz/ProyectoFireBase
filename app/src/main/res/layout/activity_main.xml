@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+<<<<<<< HEAD
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -27,23 +28,54 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="8dp" />
+=======
+        android:layout_width="320dp"
+        android:layout_height="685dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Formulario de Ingreso de Mascotas"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="84dp"
+            tools:layout_editor_absoluteY="4dp" />
+>>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
 
         <EditText
             android:id="@+id/txtCodigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+            android:ems="10"
+            android:inputType="text"
+>>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
             android:hint="Ingrese El Codigo Del Chip" />
 
         <EditText
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+            android:ems="10"
+            android:inputType="text"
+>>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
             android:hint="Ingrese El Nombre De La Mascota" />
 
         <Spinner
             android:id="@+id/spMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:contentDescription="Selecciona el tipo de mascota" />
 
         <EditText
@@ -78,3 +110,46 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+            android:contentDescription="Mascota"/>
+
+
+        <EditText
+            android:id="@+id/editTextText8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Ingrese El Nombre Del Dueño" />
+
+        <EditText
+            android:id="@+id/editTextText7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Ingrese La Direccion Del Dueño" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
