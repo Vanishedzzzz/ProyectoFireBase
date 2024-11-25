@@ -1,10 +1,10 @@
 package com.example.proyectofirebase;
 
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        CargarListaFirestore();
+
         db = FirebaseFirestore.getInstance();
 
         // Inicializar los componentes de la interfaz
@@ -54,57 +56,21 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spMascota.setAdapter(adapter);
 
-        // Cargar la lista de Firestore al iniciar
-        CargarListaFirestore();
     }
 
-    // Método para cargar los datos desde Firestore
-    public void CargarListaFirestore() {
-        // Obtenemos la instancia de Firestore
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public void CargarListaFirestore(){
 
-        // Hacemos una consulta a la colección llamada "mascotas"
-        db.collection("mascotas")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            List<String> listaMascotas = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String linea = "ID: " + document.getId() + "\n" +
-                                        "Nombre: " + document.getString("nombre") + "\n" +
-                                        "Tipo: " + document.getString("tipoMascota") + "\n" +
-                                        "Dueño: " + document.getString("dueño") + "\n" +
-                                        "Dirección: " + document.getString("direccion");
-                                listaMascotas.add(linea);
-                            }
-                            // Creamos un ArrayAdapter con la lista de elementos
-                            ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
-                                    android.R.layout.simple_list_item_1, listaMascotas);
-                            lista.setAdapter(adapter);
-                        } else {
-                            // Si hay un error, se muestra el mensaje en el Logcat
-                            Log.d("TAG", "Error al obtener datos de Firestore", task.getException());
-                        }
-                    }
-                });
     }
 
-    // Método para enviar datos a Firestore
-    public void EnviarDatosFirestore(View view) {
+    // Método para enviar datos a Firebase Firestore
+    // Metodo Enviar Datos:
+    public void enviarDatosFirestore(View view) {
         // Obtenemos los campos ingresados en el formulario
         String codigo = txtCodigo.getText().toString();
         String nombre = txtNombre.getText().toString();
         String dueño = txtDueño.getText().toString();
         String direccion = txtDireccion.getText().toString();
         String tipoMascota = spMascota.getSelectedItem().toString();
-
-        // Validar que todos los campos están llenos
-        if (codigo.isEmpty() || nombre.isEmpty() || dueño.isEmpty() || direccion.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         // Creamos un mapa con los datos a enviar
         Map<String, Object> mascota = new HashMap<>();
@@ -114,45 +80,21 @@ public class MainActivity extends AppCompatActivity {
         mascota.put("direccion", direccion);
         mascota.put("tipoMascota", tipoMascota);
 
-        // Enviamos los datos a Firestore
+        // Enviamos los datos a firestore
         db.collection("mascotas")
-                .document(codigo)  // Usamos el código como ID del documento
+                .document(codigo)
                 .set(mascota)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(MainActivity.this, "Datos enviados a Firestore correctamente", Toast.LENGTH_SHORT).show();
-                    // Después de enviar, recargamos la lista
-                    CargarListaFirestore();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(MainActivity.this, "Error al enviar datos a Firestore: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
-    // Método para cargar la lista de Firestore, se puede llamar desde el botón
-    public void CargarLista(View view) {
+    public void cargarLista(View view){
         CargarListaFirestore();
     }
+
+
 }
-=======
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-    }
-}
->>>>>>> 703ec891ec0b35739f1a4029c6f2e7d248ed6e55
